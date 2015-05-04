@@ -1,8 +1,10 @@
 Template.appMainView.rendered = ->
     flag = off
-    slideDuration = 300
+    slideDuration = 500
     hdrS = FView.byId('hamburger').surface
     ftrS = FView.byId('footerS').surface
+    labelS = FView.byId('label').surface
+    noticeS = FView.byId('notice').surface
     
     hfl = new Famous.Transitionable 0
     
@@ -34,3 +36,14 @@ Template.appMainView.rendered = ->
             Meteor.setTimeout ->
                 flag=off
             ,200
+            
+    App.events.on 'swipeleft', (page)=>
+        labelS.setContent page.charAt(0).toUpperCase() + page.slice(1)
+        if page is 'home'
+          noticeS.setContent 'Welcome!'
+        else
+          noticeS.setContent 'Enjoy'
+        
+        hfl.set 0,{duration: 500},=>
+            Session.set 'currentHeadFootContentTemplate',page+'ScrollView'
+        

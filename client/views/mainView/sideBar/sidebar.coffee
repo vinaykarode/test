@@ -13,6 +13,11 @@ Template.sidebar.rendered = ->
                 s.modifier.setTransform Famous.Transform.translate(-50,0),{duration:300},=>
                     s.modifier.setTransform Famous.Transform.translate(0,0),{duration:200}
                 
+                if evt.currentTarget.classList[3] isnt 't_sidebar_inline'
+                    c = evt.currentTarget.classList[3]
+                    App.events.emit 'swipeleft',c
+          
+                console.log evt.currentTarget.classList
                 Meteor.setTimeout ->
                     flag=off
                 ,500
