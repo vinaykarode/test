@@ -7,3 +7,5 @@ Meteor.startup ->
     App.events = new Famous.EventHandler
     App.transitionContent = 'slideWindow'
     Session.set 'currentHeadFootContentTemplate','homeScrollView'
+    Session.set 'serverURL', location.origin
+    Session.set 'design', 'I will add content'

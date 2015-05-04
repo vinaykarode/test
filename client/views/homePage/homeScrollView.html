@@ -3,7 +3,10 @@
         {{#Surface id='backing2' translate="[0,0,-1]" size="[undefined,undefined]" class="bg-darkgray"}} {{/Surface}}
             
             {{#Scrollview size="[undefined,undefined]"}}
-            {{#Surface size="[undefined,undefined]" class='task' }}HOME PAGE{{/Surface}}
+            <!--{{#Surface size="[undefined,undefined]" class='task' }}HOME PAGE{{/Surface}}-->
+            
+            {{>Surface template="homeContent" size="[undefined,auto]" id="page1" class="task"}}
+            
             {{/Scrollview}}
     
     {{/View}}

@@ -38,12 +38,34 @@ Template.appMainView.rendered = ->
             ,200
             
     App.events.on 'swipeleft', (page)=>
+        console.log {page}
         labelS.setContent page.charAt(0).toUpperCase() + page.slice(1)
         if page is 'home'
           noticeS.setContent 'Welcome!'
         else
           noticeS.setContent 'Enjoy'
         
-        hfl.set 0,{duration: 500},=>
-            Session.set 'currentHeadFootContentTemplate',page+'ScrollView'
+        #hfl.set 0,{duration: 500},=>
+            #Session.set 'currentHeadFootContentTemplate',page+'ScrollView'
+        #
         
+        if page isnt 'design'
+            hfl.set 0,{duration: 500},=>
+                Session.set 'currentHeadFootContentTemplate',page+'ScrollView'
+        else
+            sp=
+                params:
+                    "token":"iamgood"
+            
+            url = Session.get('serverURL')+'/rest/design/'
+            
+            HTTP.call 'GET',url,sp,(error,result) =>
+                if error
+                    t = "please check your internet connection"
+                else
+                    t= JSON.parse(result.content).text
+                Session.set 'design',t
+                console.log Session.get 'design'
+                hfl.set 0,{duration:500},=>
+                    Session.set 'currentHeadFootContentTemplate','designScrollView'
+                

@@ -5,7 +5,8 @@
     {{#Surface id="backing2" translate="[0,0,-1]" size="[undefined,undefined]"
          class="bg-darkgray" }}{{/Surface}}
     {{#Scrollview size="[undefined,undefined]"}}
-        {{#Surface size="[undefined,undefined]" class='task' }}Dribble PAGE{{/Surface}}
+        <!--{{#Surface size="[undefined,undefined]" class='task' }}Dribble PAGE{{/Surface}}-->
+        {{>Surface size="[undefined,auto]" template="dribbleContent" id="dribble" class="task"}}
     {{/Scrollview}}
  
  

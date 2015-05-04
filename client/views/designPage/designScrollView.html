@@ -7,8 +7,15 @@
          class="bg-darkgray" }}{{/Surface}}
     {{#Scrollview size="[undefined,undefined]"}}
  
-    {{#Surface size="[undefined,undefined]" class='task' }}DESIGN PAGE{{/Surface}}
+    <!--{{#Surface size="[undefined,undefined]" class='task' }}DESIGN PAGE{{/Surface}}-->
+   {{#Surface id="design" class='task' size="[undefined,auto]" }}
  
+<!-- note the use of the triple 'handlebars' {{{ around 'content'- this tells the render engine
+     that this is HTML code and needs to be rendered as such
+--> 
+            {{{content}}}
+    {{/Surface}}
+    
     {{/Scrollview}}
 {{/View}}
  
